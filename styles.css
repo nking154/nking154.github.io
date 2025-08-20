@@ -93,3 +93,41 @@ body.dark-mode #theme-toggle {
 body.dark-mode #theme-toggle:hover {
   background: rgba(255, 255, 255, 0.1); /* subtle white tint hover for dark mode */
 }
+
+<style>
+/* Collapsible section styles */
+.collapsible {
+  background-color: inherit; /* Match the page background */
+  color: inherit;           /* Match text color */
+  cursor: pointer;
+  padding: 12px 18px;
+  width: 100%;
+  border: 1px solid currentColor;
+  text-align: left;
+  outline: none;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.collapsible:hover {
+  background-color: rgba(0,0,0,0.05); /* subtle hover effect */
+}
+
+body.dark-mode .collapsible:hover {
+  background-color: rgba(255,255,255,0.1); /* subtle hover in dark mode */
+}
+
+.active {
+  font-weight: bold;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+</style>
+
