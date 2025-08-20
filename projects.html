@@ -170,22 +170,20 @@ const collapsibles = document.querySelectorAll('.collapsible');
 
 collapsibles.forEach(btn => {
   btn.addEventListener('click', () => {
-    // Close all other contents
     collapsibles.forEach(otherBtn => {
       if (otherBtn !== btn) {
         otherBtn.classList.remove('active');
         const otherContent = otherBtn.nextElementSibling;
-        otherContent.style.maxHeight = null;
+        otherContent.style.maxHeight = 0;
         otherContent.classList.remove('open');
       }
     });
 
-    // Toggle current content
     btn.classList.toggle('active');
     const content = btn.nextElementSibling;
 
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
+    if (content.classList.contains('open')) {
+      content.style.maxHeight = 0;
       content.classList.remove('open');
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
