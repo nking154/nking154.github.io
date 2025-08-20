@@ -165,5 +165,36 @@ for (let i = 0; i < coll.length; i++) {
 }
 </script>
 
+<script>
+const collapsibles = document.querySelectorAll('.collapsible');
+
+collapsibles.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Close all other contents
+    collapsibles.forEach(otherBtn => {
+      if (otherBtn !== btn) {
+        otherBtn.classList.remove('active');
+        const otherContent = otherBtn.nextElementSibling;
+        otherContent.style.maxHeight = null;
+        otherContent.classList.remove('open');
+      }
+    });
+
+    // Toggle current content
+    btn.classList.toggle('active');
+    const content = btn.nextElementSibling;
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      content.classList.remove('open');
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
+    }
+  });
+});
+</script>
+
+
 </body>
 </html>
