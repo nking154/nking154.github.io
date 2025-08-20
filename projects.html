@@ -177,7 +177,7 @@ collapsibles.forEach(btn => {
       if (otherBtn !== btn) {
         otherBtn.classList.remove('active');
         const otherContent = otherBtn.nextElementSibling;
-        otherContent.style.maxHeight = null;
+        otherContent.style.maxHeight = '0';
         otherContent.classList.remove('open');
       }
     });
@@ -185,7 +185,7 @@ collapsibles.forEach(btn => {
     // Toggle clicked section
     btn.classList.toggle('active');
     if (content.classList.contains('open')) {
-      content.style.maxHeight = null;
+      content.style.maxHeight = '0';
       content.classList.remove('open');
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
@@ -194,6 +194,7 @@ collapsibles.forEach(btn => {
   });
 });
 </script>
+
 
 </body>
 </html>
