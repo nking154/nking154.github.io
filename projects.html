@@ -1,115 +1,77 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projects — Nicholas King</title>
-<link rel="stylesheet" href="/styles.css"/>
-</head>
-<body>
-<header class="container">
-  <nav class="nav">
-    <a class="brand" href="/">Nicholas King</a>
-    <div class="links">
-      <a href="/index.html">Home</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/blog.html">Insights</a>
-      <button id="theme-toggle">🌙</button>
-    </div>
-  </nav>
-</header>
-
 <main class="container">
   <h1>Projects</h1>
-  <ul class="grid">
 
-    <li class="card">
-      <h3>VAR vs Random Forest for Returns</h3>
-      <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
-      <p>
-        <a href="dissertation/Master_Diss.pdf" target="_blank">PDF</a> · 
-        <a href="dissertation/daily_diss_code.do" target="_blank">Code</a> ·
-        <a href="dissertation/SUBMIT.dta" target="_blank">Data</a> ·
-      </p>
-  </li>
+  <!-- === Machine Learning / Data Science Projects === -->
+  <section>
+    <h2>Machine Learning & Data Science</h2>
+    <ul class="grid">
 
-    <li class="card">
-      <h3>Stock Analysis</h3>
-      <p>In depth analysis of MSFT and forecasting.</p>
-      <p>
-        <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/MSFT.ipynb" target="_blank">Notebook</a>
-      </p>
-  </li>
+      <li class="card">
+        <h3>VAR vs Random Forest for Returns</h3>
+        <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
+        <p>
+          <a href="dissertation/Master_Diss.pdf" target="_blank">PDF</a> · 
+          <a href="dissertation/daily_diss_code.do" target="_blank">Code</a> ·
+          <a href="dissertation/SUBMIT.dta" target="_blank">Data</a>
+        </p>
+      </li>
 
-    <li class="card">
-      <h3>Elasticity Modelling (In Progress)</h3>
-      <p>Algorithm for measuring elasticity of goods and being able to compare this to new goods.</p>
-      <p>
-        <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/Elasticity.ipynb" target="_blank">Notebook</a>
-      </p>
-  </li>
+      <li class="card">
+        <h3>Stock Analysis</h3>
+        <p>In-depth analysis of MSFT and forecasting.</p>
+        <p>
+          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/MSFT.ipynb" target="_blank">Notebook</a>
+        </p>
+      </li>
 
-  <li class="card">
-      <h3>Expected Goals (xG) Model</h3>
-      <p>Simple xG model to predict the most efficient scorers in Europe</p>
-      <p>
-        <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
-      </p>
-  </li>
+      <li class="card">
+        <h3>House Price Prediction</h3>
+        <p>Using Random Forest to predict house prices.</p>
+        <p>
+          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/more-rf.ipynb" target="_blank">Notebook</a>
+        </p>
+      </li>
 
-  <li class="card">
-      <h3>House Price Prediction</h3>
-      <p>Using Random Forest to predict house prices</p>
-      <p>
-        <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/more-rf.ipynb" target="_blank">Notebook</a> 
-      </p>
-  </li>
+      <li class="card">
+        <h3>Elasticity Modelling (In Progress)</h3>
+        <p>Algorithm for measuring elasticity of goods and comparing with new products.</p>
+        <p>
+          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/Elasticity.ipynb" target="_blank">Notebook</a>
+        </p>
+      </li>
 
-  <li class="card">
-  <h3>Discounted Cash Flow Model</h3>
-  <p>Discounted Cash Flow Model as part of JPMorgan job simulation</p>
-  <p>
-    <a href="projects/DCF.xlsx" target="_blank">Excel</a>
-  </p>
-</li>
+    </ul>
+  </section>
 
+  <!-- === Sports / Analytics Projects === -->
+  <section>
+    <h2>Sports Analytics</h2>
+    <ul class="grid">
 
+      <li class="card">
+        <h3>Expected Goals (xG) Model</h3>
+        <p>Simple xG model to predict the most efficient scorers in Europe.</p>
+        <p>
+          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
+        </p>
+      </li>
 
-  </ul>
+    </ul>
+  </section>
+
+  <!-- === Finance / Investment Projects === -->
+  <section>
+    <h2>Finance & Investment</h2>
+    <ul class="grid">
+
+      <li class="card">
+        <h3>Discounted Cash Flow Model</h3>
+        <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
+        <p>
+          <a href="projects/DCF.xlsx" target="_blank">Excel</a>
+        </p>
+      </li>
+
+    </ul>
+  </section>
 </main>
-
-<footer class="container footer">
-  <p>© <span id="y"></span> Nicholas King</p>
-</footer>
-
-<script>
-document.getElementById('y').textContent = new Date().getFullYear()
-</script>
-  
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-<script>
-const toggleBtn = document.getElementById("theme-toggle");
-const body = document.body;
-
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark-mode");
-  toggleBtn.textContent = "☀️";
-}
-
-toggleBtn.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  
-  if (body.classList.contains("dark-mode")) {
-    toggleBtn.textContent = "☀️";
-    localStorage.setItem("theme", "dark");
-  } else {
-    toggleBtn.textContent = "🌙";
-    localStorage.setItem("theme", "light");
-  }
-});
-</script>
-
-
-</body>
-</html>
