@@ -162,16 +162,15 @@ body.dark-mode {
 .content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
   background-color: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
+  padding: 0 18px; /* no vertical padding initially */
   margin-bottom: 15px;
-  padding: 0 18px;
 }
 
 .content.open {
-  max-height: 1000px; /* large enough to fit content */
-  padding: 12px 18px;
+  padding: 12px 18px; /* restore vertical padding when open */
 }
 
 .active {
