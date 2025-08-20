@@ -146,3 +146,27 @@ body.dark-mode {
   --text-color: #fff;
 }
 
+/* === Smooth, Single-Open Collapsibles === */
+
+/* Collapsible button (already styled, just ensuring transition) */
+.collapsible {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Collapsible content smooth expansion */
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 18px; /* padding only when closed */
+}
+
+.content.open {
+  padding: 12px 18px; /* padding when open */
+}
+
+/* Optional: highlight the open section */
+.collapsible.active {
+  font-weight: bold;
+}
+
