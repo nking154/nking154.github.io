@@ -95,14 +95,14 @@ body.dark-mode #theme-toggle:hover {
 }
 
 <style>
-/* Collapsible section styles */
+/* Collapsible button styled like project cards */
 .collapsible {
-  background-color: inherit; /* Match the page background */
-  color: inherit;           /* Match text color */
+  background-color: var(--card-bg);
+  color: var(--text-color);
   cursor: pointer;
   padding: 12px 18px;
   width: 100%;
-  border: 1px solid currentColor;
+  border: 1px solid var(--border-color);
   text-align: left;
   outline: none;
   font-size: 1.2em;
@@ -111,23 +111,39 @@ body.dark-mode #theme-toggle:hover {
   transition: background-color 0.2s;
 }
 
+/* Hover effect */
 .collapsible:hover {
-  background-color: rgba(0,0,0,0.05); /* subtle hover effect */
+  background-color: var(--card-hover-bg);
 }
 
-body.dark-mode .collapsible:hover {
-  background-color: rgba(255,255,255,0.1); /* subtle hover in dark mode */
-}
-
+/* Active collapsible (open) */
 .active {
   font-weight: bold;
 }
 
+/* Collapsible content */
 .content {
-  padding: 0 18px;
+  padding: 12px 18px;
   display: none;
   overflow: hidden;
   margin-bottom: 15px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+}
+
+/* Light/Dark mode variables */
+:root {
+  --card-bg: #ffffff;
+  --card-hover-bg: #f9f9f9;
+  --border-color: #ddd;
+  --text-color: #000;
+}
+
+body.dark-mode {
+  --card-bg: #1e1e1e;
+  --card-hover-bg: #2a2a2a;
+  --border-color: #333;
+  --text-color: #fff;
 }
 </style>
 
