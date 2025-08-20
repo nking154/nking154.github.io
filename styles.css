@@ -95,10 +95,10 @@ body.dark-mode #theme-toggle:hover {
 }
 
 <style>
-/* Collapsible button styled like project cards */
+/* Collapsible button styled exactly like cards */
 .collapsible {
-  background-color: var(--card-bg);
-  color: var(--text-color);
+  background-color: var(--card-bg) !important; /* Force card bg */
+  color: var(--text-color) !important;        /* Force text color */
   cursor: pointer;
   padding: 12px 18px;
   width: 100%;
@@ -113,10 +113,10 @@ body.dark-mode #theme-toggle:hover {
 
 /* Hover effect */
 .collapsible:hover {
-  background-color: var(--card-hover-bg);
+  background-color: var(--card-hover-bg) !important;
 }
 
-/* Active collapsible (open) */
+/* Active/open collapsible */
 .active {
   font-weight: bold;
 }
@@ -127,7 +127,7 @@ body.dark-mode #theme-toggle:hover {
   display: none;
   overflow: hidden;
   margin-bottom: 15px;
-  background-color: var(--card-bg);
+  background-color: var(--card-bg) !important; /* Match card bg */
   border-radius: 8px;
 }
 
@@ -146,4 +146,3 @@ body.dark-mode {
   --text-color: #fff;
 }
 </style>
-
