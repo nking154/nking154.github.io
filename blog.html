@@ -18,20 +18,29 @@
   const toggle = document.getElementById('theme-toggle');
   const body = document.body;
 
-  // Apply stored theme on load
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-  }
+<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    // Store preference
-    if (body.classList.contains('dark-mode')) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
-  });
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  
+  if (body.classList.contains("dark-mode")) {
+    toggleBtn.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleBtn.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  }
+});
 </script>
+
 
 </body></html>
