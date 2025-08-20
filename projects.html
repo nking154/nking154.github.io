@@ -11,8 +11,10 @@
   <nav class="nav">
     <a class="brand" href="/">Nicholas King</a>
     <div class="links">
+      <a href="/index.html">Home</a>
       <a href="/projects.html">Projects</a>
       <a href="/blog.html">Insights</a>
+      <button id="theme-toggle">🌙</button>
     </div>
   </nav>
 </header>
@@ -83,5 +85,26 @@
 <script>
 document.getElementById('y').textContent = new Date().getFullYear()
 </script>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Apply stored theme on load
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+  }
+
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    // Store preference
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+</script>
+
 </body>
 </html>
