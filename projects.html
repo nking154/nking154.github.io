@@ -190,12 +190,12 @@ collapsibles.forEach(btn => {
       }
     });
 
-    // Open the clicked section AFTER others have closed
-    requestAnimationFrame(() => {
+    // Small delay ensures previous maxHeight = 0 is rendered
+    setTimeout(() => {
       btn.classList.add('active');
       content.style.maxHeight = content.scrollHeight + "px";
       content.classList.add('open');
-    });
+    }, 50); // 50ms is usually enough
   });
 });
 </script>
