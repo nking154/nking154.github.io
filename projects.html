@@ -151,29 +151,34 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-// Collapsible logic: only one open at a time with smooth transition
-const collapsibles = document.querySelectorAll('.collapsible');
+const collapsibles = document.querySelectorAll(".collapsible");
+
 collapsibles.forEach(btn => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener("click", () => {
+    // Close all other collapsibles
     collapsibles.forEach(otherBtn => {
-      const content = otherBtn.nextElementSibling;
-      if(otherBtn !== btn) {
-        otherBtn.classList.remove('active');
-        content.style.maxHeight = null;
-        content.classList.remove('open');
+      const otherContent = otherBtn.nextElementSibling;
+      if (otherBtn !== btn) {
+        otherBtn.classList.remove("active");
+        otherContent.style.maxHeight = null;
+        otherContent.classList.remove("open");
       }
     });
-    btn.classList.toggle('active');
+
+    // Toggle this one
+    btn.classList.toggle("active");
     const content = btn.nextElementSibling;
-    if(content.style.maxHeight){
+
+    if (content.style.maxHeight) {
       content.style.maxHeight = null;
-      content.classList.remove('open');
+      content.classList.remove("open");
     } else {
+      content.classList.add("open"); // add class first so padding counts in scrollHeight
       content.style.maxHeight = content.scrollHeight + "px";
-      content.classList.add('open');
     }
   });
 });
+
 </script>
 </body>
 </html>
