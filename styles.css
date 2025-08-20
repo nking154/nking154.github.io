@@ -94,85 +94,56 @@ body.dark-mode #theme-toggle:hover {
   background: rgba(255, 255, 255, 0.1); /* subtle white tint hover for dark mode */
 }
 
-/* Reset button styles completely */
+/* === Collapsible button === */
 .collapsible {
-  all: unset;               /* Remove all default styles */
+  all: unset;
   display: block;
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  cursor: pointer;
-  padding: 12px 18px;
   width: 100%;
   text-align: left;
   font-size: 1.2em;
+  padding: 12px 18px;
   margin-bottom: 5px;
-  border: 1px solid var(--border-color);
   border-radius: 8px;
-  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s, font-weight 0.2s;
 }
 
-/* Hover effect */
 .collapsible:hover {
   background-color: var(--card-hover-bg);
 }
 
-/* Active/open collapsible */
-.active {
+.collapsible.active {
   font-weight: bold;
 }
 
-/* Collapsible content */
+/* === Collapsible content === */
 .content {
-  padding: 12px 18px;
-  display: none;
+  max-height: 0;            /* collapsed by default */
   overflow: hidden;
-  margin-bottom: 15px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 18px;          /* start with no padding to collapse neatly */
   background-color: var(--card-bg);
   border-radius: 8px;
 }
 
-/* Light/Dark mode variables */
+.content.open {
+  padding: 12px 18px;       /* add padding when open */
+}
+
+/* === Light/Dark mode variables === */
 :root {
-  --card-bg: #ffffff;
-  --card-hover-bg: #f9f9f9;
+  --card-bg: #f9f9f9;
+  --card-hover-bg: #f1f1f1;
   --border-color: #ddd;
   --text-color: #000;
 }
 
 body.dark-mode {
-  --card-bg: #1e1e1e;
-  --card-hover-bg: #2a2a2a;
-  --border-color: #333;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-hover-bg: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.2);
   --text-color: #fff;
-}
-
-.collapsible {
-  cursor: pointer;
-  padding: 12px 18px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background-color: var(--card-bg);
-  transition: background-color 0.2s;
-}
-
-.collapsible:hover {
-  background-color: var(--card-hover-bg);
-}
-
-.content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 0 18px; /* no vertical padding initially */
-  margin-bottom: 15px;
-}
-
-.content.open {
-  padding: 12px 18px; /* restore vertical padding when open */
-}
-
-.active {
-  font-weight: bold;
 }
