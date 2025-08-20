@@ -1,0 +1,133 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Generate 3D points
+x = np.linspace(-2, 2, 20)
+y = np.linspace(-2, 2, 20)
+z = np.linspace(-2, 2, 20)
+X, Y, Z = np.meshgrid(x, y, z)
+F = 3*X**4 + 3*X**2*Y - Y**3  # Example 4th dimension
+
+# Flatten and plot
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+sc = ax.scatter(X, Y, Z, c=F, cmap='viridis', s=10)
+fig.colorbar(sc, label='f(x, y, z)')
+ax.set_title('4D Visualization: Color = f(x, y, z)')
+plt.show()
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# Create 2D meshgrid
+x = np.linspace(-2, 2, 50)
+y = np.linspace(-2, 2, 50)
+X, Y = np.meshgrid(x, y)
+
+# Define z-values (as the 4th dimension to animate over)
+z_values = np.linspace(-2, 2, 60)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+def update(frame):
+    ax.clear()
+    z = z_values[frame]
+    F = 3 * X ** 4 + 3 * X ** 2 * Y - Y ** 3  # Example 4th dimension
+    surf = ax.plot_surface(X, Y, F, cmap='plasma', edgecolor='none')
+    ax.set_zlim(0, 15)
+    ax.set_title(f'f(x, y, z={z:.2f}) = x² + y + 2z²')
+    return surf
+
+ani = FuncAnimation(fig, update, frames=len(z_values), interval=100)
+plt.show()
+
+
+import pandas as pd
+from pandas.plotting import parallel_coordinates
+
+# Create synthetic dataset
+data = {
+    'x': np.random.uniform(-1, 1, 100),
+    'y': np.random.uniform(-1, 1, 100),
+    'z': np.random.uniform(-1, 1, 100),
+    'f': np.random.uniform(0, 1, 100),
+}
+df = pd.DataFrame(data)
+df['label'] = pd.qcut(df['f'], q=4, labels=False)  # Color by quartile
+
+parallel_coordinates(df, 'label', color=('#1f77b4', '#ff7f0e', '#2ca02c', '#d62728'))
+plt.title('Parallel Coordinates Plot (4D)')
+plt.show()
+
+
+
+import numpy as np
+import plotly.graph_objects as go
+
+# Define x, y
+x = np.linspace(-5, 5, 50)
+y = np.linspace(-5, 5, 50)
+X, Y = np.meshgrid(x, y)
+
+# Define z values (4th dimension)
+z_values = np.linspace(-5, 5, 25)  # slider steps
+
+# Create frames for each z
+frames = []
+for z in z_values:
+    F = 3 * X ** 4 + 3 * X ** 2 * Y - Y ** 3  # Example 4th dimension
+    frames.append(go.Frame(
+        data=[go.Surface(z=F, x=X, y=Y, colorscale='Viridis')],
+        name=f'z={z:.2f}'
+    ))
+
+# Initial surface
+initial_z = z_values[0]
+initial_F = X + Y + initial_z
+
+# Create figure
+fig = go.Figure(
+    data=[go.Surface(z=initial_F, x=X, y=Y, colorscale='Viridis')],
+    layout=go.Layout(
+        title="Interactive 4D Plot: f(x, y, z)",
+        scene=dict(
+            xaxis_title='x',
+            yaxis_title='y',
+            zaxis_title='f(x, y, z)',
+        ),
+        updatemenus=[dict(
+            type='buttons',
+            showactive=False,
+            buttons=[dict(label='Play',
+                          method='animate',
+                          args=[None, dict(frame=dict(duration=100, redraw=True),
+                                           fromcurrent=True, mode='immediate')])]
+        )]
+    ),
+    frames=frames
+)
+
+# Add slider
+fig.update_layout(
+    sliders=[{
+        "steps": [
+            {
+                "args": [[f"name"], {"frame": {"duration": 0, "redraw": True},
+                                     "mode": "immediate"}],
+                "label": f"{z:.2f}",
+                "method": "animate"
+            } for z, name in zip(z_values, [f"z={z:.2f}" for z in z_values])
+        ],
+        "transition": {"duration": 0},
+        "x": 0.1,
+        "xanchor": "left",
+        "y": -0.1,
+        "yanchor": "top"
+    }]
+)
+
+fig.show()
