@@ -94,7 +94,7 @@ body.dark-mode #theme-toggle:hover {
   background: rgba(255, 255, 255, 0.1); /* subtle white tint hover for dark mode */
 }
 
-/* === Collapsible button === */
+/* Collapsible button */
 .collapsible {
   all: unset;
   display: block;
@@ -105,45 +105,35 @@ body.dark-mode #theme-toggle:hover {
   margin-bottom: 5px;
   border-radius: 8px;
   cursor: pointer;
-  border: 1px solid var(--border-color);
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  transition: background-color 0.2s, color 0.2s, font-weight 0.2s;
-}
-
-.collapsible:hover {
-  background-color: var(--card-hover-bg);
+  border: 1px solid var(--border-color, #ddd);
+  background-color: var(--card-bg, #f9f9f9);
+  color: var(--text-color, #000);
+  transition: background-color 0.2s, font-weight 0.2s;
 }
 
 .collapsible.active {
   font-weight: bold;
 }
 
-/* === Collapsible content === */
+/* Collapsible content */
 .content {
-  max-height: 0;            /* collapsed by default */
+  max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 18px;          /* start with no padding to collapse neatly */
-  background-color: var(--card-bg);
-  border-radius: 8px;
+  padding: 0 18px;
+  background-color: var(--card-bg, #f9f9f9);
 }
 
 .content.open {
-  padding: 12px 18px;       /* add padding when open */
+  padding: 12px 18px; /* add padding when open */
 }
 
-/* === Light/Dark mode variables === */
-:root {
-  --card-bg: #f9f9f9;
-  --card-hover-bg: #f1f1f1;
-  --border-color: #ddd;
-  --text-color: #000;
+/* Optional: smooth fade for content */
+.content * {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-body.dark-mode {
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-hover-bg: rgba(255, 255, 255, 0.1);
-  --border-color: rgba(255, 255, 255, 0.2);
-  --text-color: #fff;
+.content.open * {
+  opacity: 1;
 }
