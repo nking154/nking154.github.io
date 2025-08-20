@@ -171,17 +171,13 @@ body.dark-mode {
   font-weight: bold;
 }
 
-/* Collapsible content */
 .content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 18px; /* no vertical padding when closed */
-  background-color: var(--card-bg);
-  border-radius: 8px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 18px; /* start with 0 vertical padding */
 }
 
 .content.open {
-  padding: 12px 18px; /* add padding when open */
+  padding: 12px 18px; /* restore padding when open */
 }
-
