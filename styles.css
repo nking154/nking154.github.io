@@ -146,38 +146,34 @@ body.dark-mode {
   --text-color: #fff;
 }
 
-/* Collapsible button */
 .collapsible {
-  all: unset;
-  display: block;
-  background-color: var(--card-bg);
-  color: var(--text-color);
   cursor: pointer;
   padding: 12px 18px;
-  width: 100%;
-  text-align: left;
-  font-size: 1.2em;
-  margin-bottom: 5px;
-  border: 1px solid var(--border-color);
   border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  transition: background-color 0.2s;
 }
 
 .collapsible:hover {
   background-color: var(--card-hover-bg);
 }
 
-.collapsible.active {
-  font-weight: bold;
-}
-
 .content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 18px; /* start with 0 vertical padding */
+  transition: max-height 0.4s ease;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 0 18px;
 }
 
 .content.open {
-  padding: 12px 18px; /* restore padding when open */
+  max-height: 1000px; /* large enough to fit content */
+  padding: 12px 18px;
+}
+
+.active {
+  font-weight: bold;
 }
