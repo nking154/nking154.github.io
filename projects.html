@@ -5,46 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Projects — Nicholas King</title>
 <link rel="stylesheet" href="/styles.css"/>
-<style>
-/* Collapsible overrides to match cards */
-.collapsible {
-  all: unset;
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: 12px 18px;
-  margin-bottom: 5px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.collapsible:hover {
-  background-color: var(--card-hover-bg);
-}
-
-.collapsible.active {
-  font-weight: bold;
-}
-
-.content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 0 18px;
-  margin-bottom: 15px;
-}
-
-.content.open {
-  padding: 12px 18px;
-}
-</style>
 </head>
 <body>
 <header class="container">
@@ -62,21 +22,8 @@
 <main class="container">
   <h1>Projects</h1>
 
-  <!-- Collapsible Sections -->
-  <button class="collapsible">Sports Projects</button>
-  <div class="content">
-    <ul class="grid">
-      <li class="card">
-        <h3>Expected Goals (xG) Model</h3>
-        <p>Simple xG model to predict the most efficient scorers in Europe</p>
-        <p>
-          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
-        </p>
-      </li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Machine Learning Projects</button>
+  <!-- Machine Learning -->
+  <button class="collapsible">Machine Learning</button>
   <div class="content">
     <ul class="grid">
       <li class="card">
@@ -95,12 +42,6 @@
           <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/more-rf.ipynb" target="_blank">Notebook</a>
         </p>
       </li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Finance & Analysis Projects</button>
-  <div class="content">
-    <ul class="grid">
       <li class="card">
         <h3>Stock Analysis</h3>
         <p>In depth analysis of MSFT and forecasting.</p>
@@ -110,11 +51,18 @@
       </li>
       <li class="card">
         <h3>Elasticity Modelling (In Progress)</h3>
-        <p>Algorithm for measuring elasticity of goods and being able to compare this to new goods.</p>
+        <p>Algorithm for measuring elasticity of goods and comparing to new goods.</p>
         <p>
           <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/Elasticity.ipynb" target="_blank">Notebook</a>
         </p>
       </li>
+    </ul>
+  </div>
+
+  <!-- Finance -->
+  <button class="collapsible">Finance / Modelling</button>
+  <div class="content">
+    <ul class="grid">
       <li class="card">
         <h3>Discounted Cash Flow Model</h3>
         <p>Discounted Cash Flow Model as part of JPMorgan job simulation</p>
@@ -124,6 +72,21 @@
       </li>
     </ul>
   </div>
+
+  <!-- Sports -->
+  <button class="collapsible">Sports</button>
+  <div class="content">
+    <ul class="grid">
+      <li class="card">
+        <h3>Expected Goals (xG) Model</h3>
+        <p>Simple xG model to predict the most efficient scorers in Europe</p>
+        <p>
+          <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+
 </main>
 
 <footer class="container footer">
@@ -131,9 +94,9 @@
 </footer>
 
 <script>
-document.getElementById('y').textContent = new Date().getFullYear();
+document.getElementById('y').textContent = new Date().getFullYear()
 
-// Theme toggle logic remains unchanged
+// Theme toggle
 const toggleBtn = document.getElementById("theme-toggle");
 const body = document.body;
 if (localStorage.getItem("theme") === "dark") {
@@ -142,43 +105,34 @@ if (localStorage.getItem("theme") === "dark") {
 }
 toggleBtn.addEventListener("click", () => {
   body.classList.toggle("dark-mode");
-  if (body.classList.contains("dark-mode")) {
-    toggleBtn.textContent = "☀️";
-    localStorage.setItem("theme", "dark");
-  } else {
-    toggleBtn.textContent = "🌙";
-    localStorage.setItem("theme", "light");
-  }
+  toggleBtn.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+  localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
 });
 
-const collapsibles = document.querySelectorAll(".collapsible");
-
+// Collapsible logic: only one open at a time with smooth transition
+const collapsibles = document.querySelectorAll('.collapsible');
 collapsibles.forEach(btn => {
-  btn.addEventListener("click", () => {
-    // Close all other collapsibles
+  btn.addEventListener('click', () => {
     collapsibles.forEach(otherBtn => {
-      const otherContent = otherBtn.nextElementSibling;
-      if (otherBtn !== btn) {
-        otherBtn.classList.remove("active");
-        otherContent.style.maxHeight = null;
-        otherContent.classList.remove("open");
+      const content = otherBtn.nextElementSibling;
+      if(otherBtn !== btn) {
+        otherBtn.classList.remove('active');
+        content.style.maxHeight = null;
+        content.classList.remove('open');
       }
     });
-
-    // Toggle this one
-    btn.classList.toggle("active");
+    btn.classList.toggle('active');
     const content = btn.nextElementSibling;
-
-    if (content.style.maxHeight) {
+    if(content.style.maxHeight){
       content.style.maxHeight = null;
-      content.classList.remove("open");
+      content.classList.remove('open');
     } else {
-      content.classList.add("open"); // add class first so padding counts in scrollHeight
       content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
     }
   });
 });
-
 </script>
+
 </body>
 </html>
