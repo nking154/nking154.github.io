@@ -172,30 +172,18 @@ collapsibles.forEach(btn => {
   btn.addEventListener('click', () => {
     const content = btn.nextElementSibling;
 
-    // If already open, just close it
-    if (content.classList.contains('open')) {
-      btn.classList.remove('active');
-      content.style.maxHeight = '0';
-      content.classList.remove('open');
-      return;
-    }
-
-    // Close all other sections first
+    // Close all other sections
     collapsibles.forEach(otherBtn => {
-      if (otherBtn !== btn) {
+      const otherContent = otherBtn.nextElementSibling;
+      if (otherContent !== content) {
         otherBtn.classList.remove('active');
-        const otherContent = otherBtn.nextElementSibling;
-        otherContent.style.maxHeight = '0';
         otherContent.classList.remove('open');
       }
     });
 
-    // Small delay ensures previous maxHeight = 0 is rendered
-    setTimeout(() => {
-      btn.classList.add('active');
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.classList.add('open');
-    }, 50); // 50ms is usually enough
+    // Toggle clicked section
+    btn.classList.toggle('active');
+    content.classList.toggle('open');
   });
 });
 </script>
