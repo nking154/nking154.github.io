@@ -1,11 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projects — Nicholas King</title>
+<link rel="stylesheet" href="/styles.css"/>
+<style>
+/* Collapsible section styles */
+.collapsible {
+  background-color: #f1f1f1;
+  color: #444;
+  cursor: pointer;
+  padding: 12px 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  border-radius: 8px;
+}
+
+.active, .collapsible:hover {
+  background-color: #ddd;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+</style>
+</head>
+<body>
+<header class="container">
+  <nav class="nav">
+    <a class="brand" href="/">Nicholas King</a>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/blog.html">Insights</a>
+      <button id="theme-toggle">🌙</button>
+    </div>
+  </nav>
+</header>
+
 <main class="container">
   <h1>Projects</h1>
 
-  <!-- === Machine Learning / Data Science Projects === -->
-  <section>
-    <h2>Machine Learning & Data Science</h2>
+  <!-- Machine Learning & Data Science -->
+  <button type="button" class="collapsible">Machine Learning & Data Science</button>
+  <div class="content">
     <ul class="grid">
-
       <li class="card">
         <h3>VAR vs Random Forest for Returns</h3>
         <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
@@ -39,15 +86,13 @@
           <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/Elasticity.ipynb" target="_blank">Notebook</a>
         </p>
       </li>
-
     </ul>
-  </section>
+  </div>
 
-  <!-- === Sports / Analytics Projects === -->
-  <section>
-    <h2>Sports Analytics</h2>
+  <!-- Sports Analytics -->
+  <button type="button" class="collapsible">Sports Analytics</button>
+  <div class="content">
     <ul class="grid">
-
       <li class="card">
         <h3>Expected Goals (xG) Model</h3>
         <p>Simple xG model to predict the most efficient scorers in Europe.</p>
@@ -55,15 +100,13 @@
           <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
         </p>
       </li>
-
     </ul>
-  </section>
+  </div>
 
-  <!-- === Finance / Investment Projects === -->
-  <section>
-    <h2>Finance & Investment</h2>
+  <!-- Finance & Investment -->
+  <button type="button" class="collapsible">Finance & Investment</button>
+  <div class="content">
     <ul class="grid">
-
       <li class="card">
         <h3>Discounted Cash Flow Model</h3>
         <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
@@ -71,7 +114,56 @@
           <a href="projects/DCF.xlsx" target="_blank">Excel</a>
         </p>
       </li>
-
     </ul>
-  </section>
+  </div>
+
 </main>
+
+<footer class="container footer">
+  <p>© <span id="y"></span> Nicholas King</p>
+</footer>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+<script>
+// Theme toggle
+const toggleBtn = document.getElementById("theme-toggle");
+const body = document.body;
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+  
+  if (body.classList.contains("dark-mode")) {
+    toggleBtn.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleBtn.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  }
+});
+
+// Collapsible sections
+const coll = document.getElementsByClassName("collapsible");
+for (let i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
