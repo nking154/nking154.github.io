@@ -23,26 +23,29 @@
 </header>
   
   <!-- Featured Projects Carousel -->
-<section class="featured-projects container">
+<section class="featured-projects">
   <h1>Featured Projects</h1>
-<div class="carousel">
-  <button class="prev">‹</button>
-  <div class="carousel-track-container">
-    <ul class="carousel-track">
-      <li class="carousel-item">
-        <img src="images/DCF.png" alt="Project 1 screenshot">
-        <h3>Discounted Cash Flow Model</h3>
-        <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
-      </li>
-      <li class="carousel-item">
-        <img src="images/diss.png" alt="Project 2 screenshot">
-        <h3>VAR vs Random Forest for Returns</h3>
-        <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
-      </li>
-    </ul>
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide">
+        <img src="/images/diss.png" alt="Project 1"/>
+        <div class="slide-info">
+          <h3>VAR vs Random Forest for Returns</h3>
+          <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="/images/DCF.png" alt="Project 2"/>
+        <div class="slide-info">
+          <h3>Discounted Cash Flow Model</h3>
+          <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
+        </div>
+      </div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
   </div>
-  <button class="next">›</button>
-</div>
+</section>
 
 
 <main class="container">
@@ -167,25 +170,27 @@ collapsibles.forEach(btn => {
     });
   }
 
-const track = document.querySelector('.carousel-track');
-const items = Array.from(track.children);
-const nextButton = document.querySelector('.next');
-const prevButton = document.querySelector('.prev');
+const slides = document.querySelector('.slides');
+const slideItems = document.querySelectorAll('.slide');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
 let index = 0;
 
-function updateCarousel() {
-  track.style.transform = `translateX(-${index * 100}%)`;
+function showSlide(i) {
+  if(i < 0) index = slideItems.length - 1;
+  else if(i >= slideItems.length) index = 0;
+  else index = i;
+  
+  slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
-nextButton.addEventListener('click', () => {
-  index = (index + 1) % items.length;
-  updateCarousel();
-});
+prev.addEventListener('click', () => showSlide(index - 1));
+next.addEventListener('click', () => showSlide(index + 1));
 
-prevButton.addEventListener('click', () => {
-  index = (index - 1 + items.length) % items.length;
-  updateCarousel();
-});
+// Optional: auto-slide every 5 seconds
+setInterval(() => showSlide(index + 1), 5000);
+
 
 
 </script>
