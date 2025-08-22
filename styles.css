@@ -248,19 +248,44 @@ body.dark-mode {
   --card-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* --- Ensure nav is above everything --- */
+/* Desktop: show links inline */
 .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
-  z-index: 2000;
+  z-index: 2000; /* nav always above hero */
 }
 
-/* --- Dropdown menu styling --- */
+.links {
+  display: flex;
+  gap: 16px;
+}
+
+.links a {
+  margin-left: 16px;
+  color: var(--ink);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    z-index: 2100;
+  }
+
   .links {
-    display: none;
+    display: none; /* hidden by default on mobile */
     flex-direction: column;
     position: absolute;
-    top: 100%; /* just below navbar */
+    top: 100%; /* just below nav */
     right: 0;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -268,7 +293,7 @@ body.dark-mode {
     width: 220px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 3000; /* make extra sure it stays on top */
+    z-index: 3000; /* stay above hero */
   }
 
   .links.open {
@@ -287,4 +312,10 @@ body.dark-mode {
     border-radius: 6px;
   }
 }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
