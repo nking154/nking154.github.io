@@ -169,18 +169,22 @@ collapsibles.forEach(btn => {
     });
   }
 
-  const track = document.querySelector('.carousel-track');
+const track = document.querySelector('.carousel-track');
 const items = Array.from(track.children);
 let index = 0;
 
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
 document.querySelector('.next').addEventListener('click', () => {
   index = (index + 1) % items.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
+  updateCarousel();
 });
 
 document.querySelector('.prev').addEventListener('click', () => {
   index = (index - 1 + items.length) % items.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
+  updateCarousel();
 });
 
 
