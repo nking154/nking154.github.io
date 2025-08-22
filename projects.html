@@ -25,27 +25,25 @@
   <!-- Featured Projects Carousel -->
 <section class="featured-projects container">
   <h1>Featured Projects</h1>
-  <div class="carousel">
-    <div class="carousel-track">
-      <!-- Project 1 -->
-      <div class="carousel-item">
-        <img src="/images/DCF.png" alt="Project 1 Screenshot">
-        <h3>Disounted Cash Flow Model</h3>
-        <p>Discounted Cash Flow Model as part of JPMorgan job simulation</p>
-      </div>
-      <!-- Project 2 -->
-      <div class="carousel-item">
-        <img src="/images/diss.png" alt="Project 2 Screenshot">
+<div class="carousel">
+  <button class="prev">‹</button>
+  <div class="carousel-track-container">
+    <ul class="carousel-track">
+      <li class="carousel-item">
+        <img src="images/DCF.png" alt="Project 1 screenshot">
+        <h3>Discounted Cash Flow Model</h3>
+        <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
+      </li>
+      <li class="carousel-item">
+        <img src="images/diss.png" alt="Project 2 screenshot">
         <h3>VAR vs Random Forest for Returns</h3>
         <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
-      </div>
-    </div>
-
-      <!-- Navigation Buttons -->
-    <button class="prev">◀</button>
-    <button class="next">▶</button>
+      </li>
+    </ul>
   </div>
-</section>
+  <button class="next">›</button>
+</div>
+
 
 <main class="container">
   <h2>Projects</h2>
@@ -93,7 +91,7 @@
     <ul class="grid">
       <li class="card">
         <h3>Discounted Cash Flow Model</h3>
-        <p>Discounted Cash Flow Model as part of JPMorgan job simulation</p>
+        <p>Discounted Cash Flow Model as part of JPMorgan job simulation.</p>
         <p>
           <a href="projects/DCF.xlsx" target="_blank">Excel</a>
         </p>
@@ -107,7 +105,7 @@
     <ul class="grid">
       <li class="card">
         <h3>Expected Goals (xG) Model</h3>
-        <p>Simple xG model to predict the most efficient scorers in Europe</p>
+        <p>Simple xG model to predict the most efficient scorers in Europe.</p>
         <p>
           <a href="https://nbviewer.org/github/nking154/nking154.github.io/blob/main/projects/xG-2.ipynb" target="_blank">Notebook</a>
         </p>
@@ -171,18 +169,20 @@ collapsibles.forEach(btn => {
 
 const track = document.querySelector('.carousel-track');
 const items = Array.from(track.children);
+const nextButton = document.querySelector('.next');
+const prevButton = document.querySelector('.prev');
 let index = 0;
 
 function updateCarousel() {
   track.style.transform = `translateX(-${index * 100}%)`;
 }
 
-document.querySelector('.next').addEventListener('click', () => {
+nextButton.addEventListener('click', () => {
   index = (index + 1) % items.length;
   updateCarousel();
 });
 
-document.querySelector('.prev').addEventListener('click', () => {
+prevButton.addEventListener('click', () => {
   index = (index - 1 + items.length) % items.length;
   updateCarousel();
 });
