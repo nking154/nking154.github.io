@@ -12,10 +12,8 @@
   <nav class="nav">
     <a class="brand" href="/">Nicholas King</a>
 
-    <!-- Hamburger button -->
     <button id="menu-toggle" class="menu-toggle">☰</button>
 
-    <!-- Links (hidden on mobile, shown in dropdown) -->
     <div class="links" id="nav-links">
       <a href="https://github.com/nking154" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/nick-king1/" target="_blank">LinkedIn</a>
@@ -79,6 +77,15 @@ toggleBtn.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
+
+  // ===== Mobile Menu Toggle =====
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+  
 </script>
 
 </body>
