@@ -11,16 +11,44 @@
   <nav class="nav">
     <a class="brand" href="/">Nicholas King</a>
     <div class="links">
-      <a href="/index.html">Home</a>
+      <a href="https://github.com/nking154" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/nick-king1/" target="_blank">LinkedIn</a>
       <a href="/projects.html">Projects</a>
       <a href="/blog.html">Insights</a>
+      <a href="/Nicholas_King_CV.pdf" target="_blank">CV</a>
+      <a href="mailto:nicholaslking@icloud.com">Contact</a>
       <button id="theme-toggle">🌙</button>
     </div>
   </nav>
 </header>
+  
+  <!-- Featured Projects Carousel -->
+<section class="featured-projects container">
+  <h1>Featured Projects</h1>
+  <div class="carousel">
+    <div class="carousel-track">
+      <!-- Project 1 -->
+      <div class="carousel-item">
+        <img src="/images/DCF.png" alt="Project 1 Screenshot">
+        <h3>Disounted Cash Flow Model</h3>
+        <p>Discounted Cash Flow Model as part of JPMorgan job simulation</p>
+      </div>
+      <!-- Project 2 -->
+      <div class="carousel-item">
+        <img src="/images/diss.png" alt="Project 2 Screenshot">
+        <h3>VAR vs Random Forest for Returns</h3>
+        <p>Comparative forecasting across US/UK/Brazil/India/Mexico; error metrics and variable importance.</p>
+      </div>
+    </div>
+
+      <!-- Navigation Buttons -->
+    <button class="prev">◀</button>
+    <button class="next">▶</button>
+  </div>
+</section>
 
 <main class="container">
-  <h1>Projects</h1>
+  <h2>Projects</h2>
 
   <!-- Machine Learning -->
   <button class="collapsible">🤖Machine Learning</button>
@@ -140,6 +168,21 @@ collapsibles.forEach(btn => {
       navLinks.classList.toggle('open');
     });
   }
+
+  const track = document.querySelector('.carousel-track');
+const items = Array.from(track.children);
+let index = 0;
+
+document.querySelector('.next').addEventListener('click', () => {
+  index = (index + 1) % items.length;
+  track.style.transform = `translateX(-${index * 100}%)`;
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  index = (index - 1 + items.length) % items.length;
+  track.style.transform = `translateX(-${index * 100}%)`;
+});
+
 
 </script>
 
