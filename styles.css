@@ -203,3 +203,33 @@ body.dark-mode .content {
   }
 }
 
+/* Mobile nav dropdown */
+.links {
+  display: none; /* hidden by default on mobile */
+  position: absolute;
+  top: 60px; /* adjust to sit below header */
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  flex-direction: column;
+  padding: 10px;
+  z-index: 1000; /* ensures it’s above page text */
+}
+
+.links.open {
+  display: flex;
+}
+
+.links a {
+  padding: 10px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.links a:hover {
+  background: var(--card-hover-bg);
+  border-radius: 6px;
+}
+
