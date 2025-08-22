@@ -255,12 +255,17 @@ body.dark-mode {
   justify-content: space-between;
   position: relative;
   z-index: 2000; /* nav always above hero */
+  padding: 10px 16px;
 }
 
 .brand {
   font-weight: 700;
   text-decoration: none;
-  color: var(--ink);
+  color: #222; /* Light mode default */
+}
+
+body.dark-mode .brand {
+  color: #f5f5f5; /* Dark mode */
 }
 
 .links {
@@ -272,8 +277,12 @@ body.dark-mode {
 
 .links a {
   text-decoration: none;
-  color: var(--ink);
+  color: #222; /* Light mode default */
   opacity: 0.9;
+}
+
+body.dark-mode .links a {
+  color: #f5f5f5;
 }
 
 .menu-toggle {
@@ -282,8 +291,12 @@ body.dark-mode {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--ink);
-  z-index: 3100; /* always clickable */
+  color: #222; /* Light mode */
+  z-index: 3100;
+}
+
+body.dark-mode .menu-toggle {
+  color: #f5f5f5; /* Dark mode */
 }
 
 /* === Mobile Dropdown === */
@@ -298,12 +311,17 @@ body.dark-mode {
     position: absolute;
     top: 100%; /* directly below nav */
     right: 0;
-    background: var(--card-bg, #fff); /* fallback white if var not set */
-    border: 1px solid var(--border, #ddd);
+    background: #fff; /* Light mode dropdown background */
+    border: 1px solid #ddd;
     border-radius: 8px;
     width: 220px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  body.dark-mode .links {
+    background: #121212; /* Dark mode dropdown */
+    border: 1px solid rgba(255,255,255,0.2);
   }
 
   .links.open {
@@ -315,7 +333,7 @@ body.dark-mode {
   .links button {
     padding: 12px;
     text-decoration: none;
-    color: var(--text-color, #222);
+    color: #222; /* Light mode text */
     text-align: left;
     width: 100%;
     background: none;
@@ -323,10 +341,20 @@ body.dark-mode {
     cursor: pointer;
   }
 
+  body.dark-mode .links a, 
+  body.dark-mode .links button {
+    color: #f5f5f5; /* Dark mode text */
+  }
+
   .links a:hover, 
   .links button:hover {
-    background: var(--card-hover-bg, #f5f5f5);
+    background: #f5f5f5; /* Light hover */
     border-radius: 6px;
+  }
+
+  body.dark-mode .links a:hover, 
+  body.dark-mode .links button:hover {
+    background: rgba(255,255,255,0.1); /* Dark hover */
   }
 }
 
@@ -334,3 +362,4 @@ body.dark-mode {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
