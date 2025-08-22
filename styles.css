@@ -402,3 +402,26 @@ body.dark-mode .menu-toggle {
     to { opacity: 1; transform: translateY(0); }
   }
 }
+
+.hero-image img {
+  max-width: 300px;       /* controls max size */
+  width: 100%;            /* makes it scale down on smaller screens */
+  height: auto;           /* preserves aspect ratio */
+  border-radius: 12px;    /* rounded corners for style */
+  object-fit: cover;      /* ensures the image fills the box nicely */
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 72px 24px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
