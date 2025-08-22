@@ -248,118 +248,86 @@ body.dark-mode {
   --card-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
-/* === Navigation Bar === */
+/* === FINAL NAV + DROPDOWN FIX === */
+
+/* Make sure nav sits above hero/content */
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index: 2000; /* nav always above hero */
+  z-index: 5000;
   padding: 10px 16px;
 }
 
-.brand {
-  font-weight: 700;
-  text-decoration: none;
-  color: #222; /* Light mode default */
-}
-
-body.dark-mode .brand {
-  color: #f5f5f5; /* Dark mode */
-}
-
+/* Desktop: links visible inline */
 .links {
   display: flex;
   gap: 16px;
   align-items: center;
-  z-index: 3000; /* keep links above all other content */
 }
 
-.links a {
-  text-decoration: none;
-  color: #222; /* Light mode default */
-  opacity: 0.9;
-}
+/* High-contrast brand + links in light/dark */
+.brand { color: #222; }
+.links a { color: #222; text-decoration: none; opacity: 0.95; }
+.menu-toggle { display: none; color: #222; background: none; border: 0; font-size: 1.6rem; cursor: pointer; }
 
-body.dark-mode .links a {
-  color: #f5f5f5;
-}
+body.dark-mode .brand,
+body.dark-mode .links a,
+body.dark-mode .menu-toggle { color: #f5f5f5; }
 
-.menu-toggle {
-  display: none; /* hidden on desktop */
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #222; /* Light mode */
-  z-index: 3100;
-}
-
-body.dark-mode .menu-toggle {
-  color: #f5f5f5; /* Dark mode */
-}
-
-/* === Mobile Dropdown === */
+/* Mobile: collapse to hamburger + dropdown */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+  .menu-toggle { display: block; }
 
+  /* Hidden by default on mobile; toggled via .open */
   .links {
-    display: none; /* hidden by default on mobile */
-    flex-direction: column;
+    display: none;
     position: absolute;
-    top: 100%; /* directly below nav */
+    top: 100%;         /* just below the navbar */
     right: 0;
-    background: #fff; /* Light mode dropdown background */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 220px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    flex-direction: column;
+    width: min(88vw, 260px);
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 6000;     /* above hero text */
+    background: #ffffff;            /* explicit light-mode background */
+    border: 1px solid #ddd;         /* explicit light-mode border */
   }
 
+  .links.open { display: flex; animation: slideDown 0.25s ease; }
+
+  .links a, .links button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 10px;
+    border-radius: 8px;
+    color: #222;                   /* explicit light-mode text */
+    background: transparent;
+    border: 0;
+  }
+
+  .links a:hover, .links button:hover {
+    background: #f5f5f5;          /* explicit light-mode hover */
+  }
+
+  /* Dark-mode dropdown colors */
   body.dark-mode .links {
-    background: #121212; /* Dark mode dropdown */
+    background: #121212;
     border: 1px solid rgba(255,255,255,0.2);
   }
-
-  .links.open {
-    display: flex;
-    animation: slideDown 0.3s ease;
-  }
-
-  .links a, 
-  .links button {
-    padding: 12px;
-    text-decoration: none;
-    color: #222; /* Light mode text */
-    text-align: left;
-    width: 100%;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  body.dark-mode .links a, 
-  body.dark-mode .links button {
-    color: #f5f5f5; /* Dark mode text */
-  }
-
-  .links a:hover, 
-  .links button:hover {
-    background: #f5f5f5; /* Light hover */
-    border-radius: 6px;
-  }
-
-  body.dark-mode .links a:hover, 
-  body.dark-mode .links button:hover {
-    background: rgba(255,255,255,0.1); /* Dark hover */
-  }
+  body.dark-mode .links a,
+  body.dark-mode .links button { color: #f5f5f5; }
+  body.dark-mode .links a:hover,
+  body.dark-mode .links button:hover { background: rgba(255,255,255,0.08); }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Optional: ensure hero never overlays nav accidentally */
+.hero, .container { position: relative; z-index: 1; }
 
