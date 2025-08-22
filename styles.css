@@ -425,3 +425,41 @@ body.dark-mode .menu-toggle {
     text-align: center;
   }
 }
+
+.hero {
+  display: flex;
+  flex-direction: column;       /* stack items vertically */
+  align-items: center;          /* center horizontally */
+  justify-content: center;      /* center vertically if needed */
+  gap: 24px;                    /* space between headline, image, buttons */
+  padding: 72px 24px;
+  text-align: center;           /* center text */
+}
+
+.hero .hero-image img {
+  max-width: 300px;             /* controls image size */
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.hero .buttons-container {
+  display: flex;
+  gap: 12px;                    /* space between buttons */
+  flex-wrap: wrap;               /* wrap on small screens */
+  justify-content: center;
+}
+
+/* Optional: slightly smaller on mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 16px;
+    gap: 16px;
+  }
+
+  .hero .hero-image img {
+    max-width: 200px;
+  }
+}
+
