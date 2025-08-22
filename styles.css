@@ -552,3 +552,52 @@ body.dark-mode .menu-toggle {
   border-radius: 8px;
   margin-bottom: 12px;
 }
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%; /* show one slide at a time */
+  box-sizing: border-box;
+  padding: 16px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* constrain screenshot size */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: #1a243a;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
