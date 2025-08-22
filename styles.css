@@ -521,4 +521,35 @@ body.dark-mode .menu-toggle {
   }
 }
 
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px; /* constrain width */
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 300%; /* 3 items, each 100% */
+}
+
+.carousel-item {
+  flex: 0 0 100%; /* each item takes 100% of carousel width */
+  box-sizing: border-box;
+  padding: 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
 
