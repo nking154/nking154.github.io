@@ -21,25 +21,38 @@
 
 <main class="container">
   <h1>Insights</h1>
-  <ul class="grid">
-    <!-- Blog card example -->
-    <li class="card">
-      <article>
-        <h2><a href="/insights/global-energy-trading.html">The Evolution of the Global Energy Trading Market</a></h2>
-        <p>
-          A professional financial analysis of the global energy trading market, highlighting structural drivers,
-          trading instruments, and strategic considerations for institutional participants.
-        </p>
-        <a href="/insights/global-energy-trading.html" class="read-more">Read More →</a>
-      </article>
-    </li>
 
-    <!-- Future articles -->
-    <li class="card">
-      <h3>Coming Soon</h3>
-      <p>New insights and articles will appear here shortly!</p>
-    </li>
-  </ul>
+  <!-- Featured Article -->
+  <section class="featured-article">
+    <h2>Featured Article</h2>
+    <article class="card">
+      <h3><a href="/insights/global-energy-trading.html">The Evolution of the Global Energy Trading Market</a></h3>
+      <p>
+        A financial analysis of the global energy trading market, highlighting structural drivers,
+        trading instruments, and strategic considerations for institutional participants.
+      </p>
+      <a href="/insights/global-energy-trading.html" class="read-more">Read More →</a>
+    </article>
+  </section>
+
+  <!-- Past Articles Dropdown -->
+  <section class="past-articles">
+    <button id="toggle-past" class="dropdown-toggle">View Past Articles ▼</button>
+    <ul id="past-articles-list" class="grid" style="display: none;">
+      <li class="card">
+        <h3>Coming Soon</h3>
+        <p>New insights and articles will appear here shortly!</p>
+      </li>
+      <li class="card">
+        <h3>Coming Soon</h3>
+        <p>New insights and articles will appear here shortly!</p>
+      </li>
+      <li class="card">
+        <h3>Coming Soon</h3>
+        <p>New insights and articles will appear here shortly!</p>
+      </li>
+    </ul>
+  </section>
 </main>
 
 <footer class="container footer">
@@ -68,6 +81,22 @@
     } else {
       toggleBtn.textContent = "🌙";
       localStorage.setItem("theme", "light");
+    }
+  });
+</script>
+
+<script>
+  // Toggle Past Articles
+  const toggleBtn = document.getElementById('toggle-past');
+  const pastList = document.getElementById('past-articles-list');
+
+  toggleBtn.addEventListener('click', () => {
+    if (pastList.style.display === 'none') {
+      pastList.style.display = 'grid';
+      toggleBtn.textContent = 'Hide Past Articles ▲';
+    } else {
+      pastList.style.display = 'none';
+      toggleBtn.textContent = 'View Past Articles ▼';
     }
   });
 </script>
