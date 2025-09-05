@@ -38,7 +38,7 @@
   <!-- Past Articles Dropdown -->
   <section class="past-articles">
     <button id="toggle-past" class="dropdown-toggle">View Past Articles ▼</button>
-    <ul id="past-articles-list" class="grid" style="display: none;">
+    <ul id="past-articles-list" class="grid past-list hidden">
       <li class="card">
         <h3>Coming Soon</h3>
         <p>New insights and articles will appear here shortly!</p>
@@ -54,6 +54,25 @@
     </ul>
   </section>
 </main>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  // Toggle Past Articles
+  const toggleBtn = document.getElementById('toggle-past');
+  const pastList = document.getElementById('past-articles-list');
+
+  toggleBtn.addEventListener('click', () => {
+    pastList.classList.toggle('hidden');
+    toggleBtn.textContent = pastList.classList.contains('hidden')
+      ? 'View Past Articles ▼'
+      : 'Hide Past Articles ▲';
+  });
+</script>
 
 <footer class="container footer">
   <p>© <span id="y"></span> Nicholas King</p>
@@ -84,21 +103,6 @@
     }
   });
 </script>
-
-<script>
-  // Toggle Past Articles
-  const toggleBtn = document.getElementById('toggle-past');
-  const pastList = document.getElementById('past-articles-list');
-
-  toggleBtn.addEventListener('click', () => {
-    if (pastList.style.display === 'none') {
-      pastList.style.display = 'grid';
-      toggleBtn.textContent = 'Hide Past Articles ▲';
-    } else {
-      pastList.style.display = 'none';
-      toggleBtn.textContent = 'View Past Articles ▼';
-    }
-  });
-</script>
+  
 </body>
 </html>
