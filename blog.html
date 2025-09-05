@@ -13,7 +13,7 @@
     <div class="links">
       <a href="/index.html">Home</a>
       <a href="/projects.html">Projects</a>
-      <a href="/blog.html">Insights</a>
+      <a href="/blog.html" class="active">Insights</a>
       <button id="theme-toggle">🌙</button>
     </div>
   </nav>
@@ -22,6 +22,19 @@
 <main class="container">
   <h1>Insights</h1>
   <ul class="grid">
+    <!-- Blog card example -->
+    <li class="card">
+      <article>
+        <h2><a href="/insights/global-energy-trading.html">The Evolution of the Global Energy Trading Market</a></h2>
+        <p>
+          A professional financial analysis of the global energy trading market, highlighting structural drivers,
+          trading instruments, and strategic considerations for institutional participants.
+        </p>
+        <a href="/insights/global-energy-trading.html" class="read-more">Read More →</a>
+      </article>
+    </li>
+
+    <!-- Future articles -->
     <li class="card">
       <h3>Coming Soon</h3>
       <p>New insights and articles will appear here shortly!</p>
@@ -41,7 +54,6 @@
   const toggleBtn = document.getElementById("theme-toggle");
   const body = document.body;
 
-  // Load saved theme
   if (localStorage.getItem("theme") === "dark") {
     body.classList.add("dark-mode");
     toggleBtn.textContent = "☀️";
@@ -58,15 +70,6 @@
       localStorage.setItem("theme", "light");
     }
   });
-
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  }
-
 </script>
 </body>
 </html>
