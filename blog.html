@@ -35,7 +35,7 @@
     </article>
   </section>
 
- <!-- Past Articles Dropdown -->
+<!-- Past Articles Dropdown -->
 <section class="past-articles">
   <button id="toggle-past" class="dropdown-toggle">View Past Articles ▼</button>
   <ul id="past-articles-list" class="grid past-list hidden">
@@ -55,32 +55,53 @@
 </section>
 
 <style>
-  /* Modern toggle button */
+  /* Minimalist toggle button */
   .dropdown-toggle {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    background-color: #0070f3;
-    color: #fff;
+    color: #0070f3;
+    background: none;
     border: none;
-    border-radius: 8px;
+    padding: 0.5rem 0;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s, transform 0.2s;
+    border-bottom: 1px solid #ddd;
+    transition: color 0.3s;
     margin-bottom: 1rem;
   }
 
   .dropdown-toggle:hover {
-    background-color: #005ccc;
-    transform: translateY(-2px);
+    color: #005ccc;
   }
 
   .dropdown-toggle:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0,112,243,0.4);
+  }
+
+  .hidden {
+    display: none;
   }
 </style>
+
+<script>
+  // Toggle Past Articles
+  const toggleBtn = document.getElementById('toggle-past');
+  const pastList = document.getElementById('past-articles-list');
+
+  // Ensure hidden by default
+  pastList.classList.add('hidden');
+
+  toggleBtn.addEventListener('click', () => {
+    pastList.classList.toggle('hidden');
+    toggleBtn.textContent = pastList.classList.contains('hidden')
+      ? 'View Past Articles ▼'
+      : 'Hide Past Articles ▲';
+  });
+</script>
+
 
 <script>
   // Toggle Past Articles
